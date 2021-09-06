@@ -1,5 +1,6 @@
-from add import menu,sub_menu
-from time import sleep
+from add import menu,sub_menu,encerrar
+
+
 menu()
 
 while True:
@@ -19,5 +20,5 @@ while True:
 
     if resposta == 4:
         sub_menu("Finalizar progama")
-        
+        encerrar()
         break
