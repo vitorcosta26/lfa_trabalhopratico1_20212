@@ -1,7 +1,7 @@
 # lfa_trabalhopratico1_20212
 
-# Integrantes
+## Integrantes
 
-## Johnny William Severo Dantas Costa
-## Kledyson Henrique Goes dos Santos
-## Paulo Vitor Costa Melo
+- Johnny William Severo Dantas Costa
+- Kledyson Henrique Goes dos Santos
+- Paulo Vitor Costa Melo
