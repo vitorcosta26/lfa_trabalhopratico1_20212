@@ -67,8 +67,6 @@ class Automato:
             print(self.transitions[i])
         print("\n")
     
-
-
     def checarPalavra(self, palavra):
         atualState = self.initialState
         for letra in palavra:
@@ -82,9 +80,3 @@ class Automato:
         else:
             print(f'A palavra não foi aceita.')
             return False
-
-#states
-#initial
-#accepting
-#alphabet
-#transitions
