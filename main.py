@@ -1,4 +1,5 @@
 from add import menu,sub_menu,encerrar
+from automato import Automato
 
 menu()
 
@@ -11,7 +12,7 @@ while True:
     
     if resposta == 1:
         sub_menu("Cadastrar autômato")
-        nome = input("Digite o nome do arquivo, sem o\".txt.\": ")
+        nome = input("Digite o nome do arquivo, sem o\".txt\": ")
         automato = Automato.ler_automato(nome)
 
     elif resposta == 2:
