@@ -99,13 +99,13 @@ class Automato:
         return empty_transition
     
     def checarPalavra(self, palavra):
-        atualState = self.initialState
+        atualState = self.initial
         for letra in palavra:
-            for transicao in self.transicao[atualState]:
+            for transicao in self.transitions[atualState]:
                 if transicao[0] == letra:
                     atualState = transicao[1]
 
-        if atualState in self.finalState:
+        if atualState in self.accepting:
             print(f'A palavra foi aceita.')
             return True
         else:
