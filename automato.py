@@ -1,21 +1,20 @@
 import re
 
 class Automato:
-    def __init__(self, automato, states, initial, accepting, alphabet, transitions):
-        self.automato = automato
-        self.states = states
-        self.initial = initial
-        self.accepting = accepting
-        self.alphabet = alphabet
-        self.transitions = transitions
-        self.tipo = self.type()
+    def __init__(self, arquivo):
+        self.automato, e, e_i, e_a, a, t = self.ler_arquivo(arquivo)
+        self.estados = e
+        self.estado_inicial = e_i
+        self.estados_aceitacao = e_a
+        self.alfabeto = a
+        self.transicoes = t
+        self.tipo = self.tipo()
     
     @staticmethod
-    def ler_automato(nomeArquivo):
+    def ler_arquivo(nomeArquivo):
         automato = []
-        tipo = ""
 
-        arquivo = open(nomeArquivo+".txt", "r")
+        arquivo = open(nomeArquivo + ".txt", "r")
         for linha in arquivo:
             automato.append(linha.strip("\n"))
         arquivo.close()
@@ -25,63 +24,63 @@ class Automato:
 
         for i in range(len(automato)):
             if "states" in automato[i]:
-                states = automato[i].split("|")
-                states.remove("states")
-                if "" in states:
-                    states.remove("")
+                estados = automato[i].split("|")
+                estados.remove("states")
+                if "" in estados:
+                    estados.remove("")
             if "initial" in automato[i]:
-                initial = automato[i].split("|")
-                initial.remove("initial")
-                if "" in initial:
-                    initial.remove("")
+                estado_inicial = automato[i].split("|")
+                estado_inicial.remove("initial")
+                if "" in estado_inicial:
+                    estado_inicial.remove("")
             if "accepting" in automato[i]:
-                accepting = automato[i].split("|")
-                accepting.remove("accepting")
-                if "" in accepting:
-                    accepting.remove("")
+                estados_aceitacao = automato[i].split("|")
+                estados_aceitacao.remove("accepting")
+                if "" in estados_aceitacao:
+                    estados_aceitacao.remove("")
             if "alphabet" in automato[i]:
-                alphabet = automato[i].split("|")
-                alphabet.remove("alphabet")
-                if "" in alphabet:
-                    alphabet.remove("")
+                alfabeto = automato[i].split("|")
+                alfabeto.remove("alphabet")
+                if "" in alfabeto:
+                    alfabeto.remove("")
             if "transitions" in automato[i]:
-                transitions = automato[i].split("|")
-                transitions.remove("transitions")
-                if "" in transitions:
-                    transitions.remove("")
-        
-        for i in range(len(transitions)):
-            transitions[i] = re.split(">|:|,", transitions[i])
-        
-        return Automato(automato, states, initial, accepting, alphabet, transitions)
+                transicoes = automato[i].split("|")
+                transicoes.remove("transitions")
+                if "" in transicoes:
+                    transicoes.remove("")
+
+        for i in range(len(transicoes)):
+            transicoes[i] = re.split(">|:|,", transicoes[i])
+
+        return automato, estados, estado_inicial, estados_aceitacao, alfabeto, transicoes
     
-    def type(self):
-        tipo = ""
-        if self.is_deterministic():
+    def tipo(self):
+        if self.determinístico_():
             tipo = "Determinístico"
         else:
             tipo = "Não-Determinístico"
-        if self.is_empty_transition():
+        if self.transicoes_vazias_():
             tipo = "Não-Determinístico com Transições Vazias"
+            
         return tipo
 
     def imprimir(self):
         print("Tipo\n"+self.tipo)
         print("Estados")
-        for i in range(len(self.states)):
-            print(self.states[i])
+        for e in self.estados:
+            print(e)
         print("Estado Inicial")
-        for i in range(len(self.initial)):
-            print(self.initial[i])
+        for e_i in self.estado_inicial:
+            print(e_i)
         print("Estados de Aceitação")
-        for i in range(len(self.accepting)):
-            print(self.accepting[i])
+        for e_a in self.estados_aceitacao:
+            print(e_a)
         print("Alfabeto")
-        for i in range(len(self.alphabet)):
-            print(self.alphabet[i])
+        for s in self.alfabeto:
+            print(s)
         print("Transições")
-        for i in range(len(self.transitions)):
-            print(self.transitions[i])
+        for t in self.transicoes:
+            print(f"{t[0]}:{t[1]}>{''.join(t[2:])}")
         print("\n")
     
     def is_deterministic(self):
