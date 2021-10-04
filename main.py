@@ -9,7 +9,7 @@ while True:
     resposta = int(input('\n1 - Cadastrar autômato\n' +
                          '2 - Imprimir autômato\n' +
                          '3 - Testar palavra\n' +
-                         '0 - Finalizar progama\n\nOpção: '))
+                         '0 - Finalizar programa\n\nOpção: '))
     if 0 <= resposta <= 3:
         if resposta == 1:
             sub_menu("Cadastrar autômato")
