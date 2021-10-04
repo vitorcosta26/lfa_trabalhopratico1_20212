@@ -34,7 +34,7 @@ Esta opção será para o testamento de palavras para o autômato cadastrado. Es
  - A palavra " " foi aceita
  - A palavra " " foi rejeitada  
 
-No caso do teste de uma palavra AFNDε terá duas formas de valida-la:  
+No caso do teste de uma palavra vazia em um AFNDε terá duas formas de validá-la:  
  - Passando "" como parâmetro 
  - Digitando nada no console 
 ### 4 - Finalizar programa
