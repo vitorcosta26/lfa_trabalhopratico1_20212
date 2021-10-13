@@ -190,7 +190,7 @@ class Automato:
 
     #Função para testar palavra no AFD
     def testar_palavra(self, palavra):
-        if self.tipo() == "Não-Determinístico":
+        if self.tipo() == "Não-Determinístico" or self.tipo() == "Não-Determinístico com Transições Vazias":
             self.converter()
 
         #Pega o estado inicial 

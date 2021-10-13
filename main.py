@@ -20,7 +20,7 @@ while True:
             sub_menu("Imprimir autômato")
             print("Autômato " + automato.tipo())
             automato.imprimir()
-            if automato.tipo() == "Não-Determinístico":
+            if automato.tipo() == "Não-Determinístico" or automato.tipo() == "Não-Determinístico com Transições Vazias":
                 sleep(1)
                 print("\nTransformando\n")
                 sleep(1)
@@ -32,10 +32,7 @@ while True:
             sub_menu("Testar palavra")
             palavra = input("Digite a palavra: ")
             print()
-            if automato.tipo() == "Não-Determinístico com Transições Vazias":
-                automato.testar_palavra_transicao_vazia(palavra)
-            else:
-                automato.testar_palavra(palavra)
+            automato.testar_palavra(palavra)
 
         else:
             sub_menu("Finalizar progama")
